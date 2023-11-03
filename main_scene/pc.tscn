@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvrcrl6w728vq"]
+
+[ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
+[ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
+[ext_resource type="Theme" uid="uid://dl2opt8d54kxa" path="res://main_scene/ui_pc.theme" id="3_6ci7a"]
+[ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="4_7d8mf"]
+[ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="5_alvql"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
+action = &"toggle_pencilmark_mode"
+
+[sub_resource type="Shortcut" id="Shortcut_fqemq"]
+events = [SubResource("InputEventAction_qlrdm")]
+
+[node name="MainScene" type="Control" node_paths=PackedStringArray("back_to_menu_button", "grid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5h0il")
+back_to_menu_button = NodePath("HBoxContainer/VBoxContainer/BackToMenuButton")
+grid = NodePath("HBoxContainer/AspectRatioContainer/Grid")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.95
+
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "save_button", "copy_to_clipboard_button") instance=ExtResource("2_nvosp")]
+layout_mode = 2
+size_flags_horizontal = 3
+time_label = NodePath("../../VBoxContainer/TimeLabel")
+puzzle_info_label = NodePath("../../VBoxContainer/PuzzleInfoLabel")
+pencilmark_button = NodePath("../../VBoxContainer/PencilmarkModeButton")
+highlight_button = NodePath("../../VBoxContainer/HighlightButton")
+clear_highlight_button = NodePath("../../VBoxContainer/ClearHighlightButton")
+save_button = NodePath("../../VBoxContainer/SaveButton")
+copy_to_clipboard_button = NodePath("../../VBoxContainer/CopyToClipboardButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_6ci7a")
+
+[node name="PencilmarkModeButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+shortcut = SubResource("Shortcut_fqemq")
+text = "Pencilmark
+mode: off"
+text_overrun_behavior = 4
+
+[node name="HighlightButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Highlight clues"
+
+[node name="ClearHighlightButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Clear highlight"
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="PuzzleInfoText" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Puzzle information:"
+
+[node name="PuzzleInfoLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Puzzle is invalid, no error checking provided"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SaveButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="CopyToClipboardButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Copy to Clipboard"
+
+[node name="BackToMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to menu"
+
+[node name="FontResizer" type="Node" parent="."]
+script = ExtResource("4_7d8mf")
+themes_to_resize = Array[Theme]([ExtResource("5_alvql"), ExtResource("3_6ci7a")])

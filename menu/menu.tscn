@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtjs17a2wkvoi"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_7ov1f"]
+[ext_resource type="Theme" uid="uid://csqhrlny8kwr1" path="res://menu/menu.theme" id="1_oq6a0"]
+[ext_resource type="PackedScene" uid="uid://cpeua8y06ihlc" path="res://file_dialog/file_dialog.tscn" id="3_q4gew"]
+[ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="3_r3poc"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oq6a0")
+script = ExtResource("1_7ov1f")
+
+[node name="FileDialog" parent="." instance=ExtResource("3_q4gew")]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_top = 64.0
+offset_right = 30.5
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_type_variation = &"Name"
+text = "Gudoku"
+
+[node name="LoadFileButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -23.0
+offset_right = 206.0
+offset_bottom = 23.0
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Load from file"
+
+[node name="GenerateButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -23.0
+offset_right = 69.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Generate"
+
+[node name="LoadStringButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -23.0
+offset_bottom = 23.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Load from string"
+
+[node name="PuzzleTextEdit" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.652
+anchor_right = 1.0
+anchor_bottom = 0.652
+offset_left = -245.0
+offset_top = -42.0
+offset_bottom = 42.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"LoadPuzzle"
+placeholder_text = "Enter Sudoku here"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="FontResizer" type="Node" parent="."]
+script = ExtResource("3_r3poc")
+themes_to_resize = Array[Theme]([ExtResource("1_oq6a0")])
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_load_file_dialog_file_selected"]
+[connection signal="pressed" from="LoadFileButton" to="." method="_on_load_file_button_pressed"]
+[connection signal="pressed" from="GenerateButton" to="." method="_on_generate_button_pressed"]
+[connection signal="pressed" from="LoadStringButton" to="." method="_on_load_string_button_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpeua8y06ihlc"]
+
+[ext_resource type="Script" path="res://file_dialog/file_dialog.gd" id="1_aexar"]
+
+[node name="FileDialog" type="FileDialog"]
+mode = 1
+title = "Save a Sudoku"
+initial_position = 5
+size = Vector2i(796, 372)
+popup_window = true
+access = 2
+filters = PackedStringArray("*.gudoku; Gudoku Save File")
+script = ExtResource("1_aexar")

@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcgpgjwghgjo1"]
+
+[ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
+[ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
+[ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="3_5pps3"]
+[ext_resource type="PackedScene" uid="uid://0hyxgegxttlx" path="res://numpad/numpad.tscn" id="4_lnewa"]
+[ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="5_p0vgd"]
+[ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="6_fm5ki"]
+[ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://numpad/numpad.theme" id="7_7mv4u"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
+action = &"toggle_pencilmark_mode"
+
+[sub_resource type="Shortcut" id="Shortcut_5nhrx"]
+events = [SubResource("InputEventAction_qlrdm")]
+
+[node name="MainScene" type="Control" node_paths=PackedStringArray("back_to_menu_button", "grid")]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1600.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ji3la")
+script = ExtResource("2_5shto")
+back_to_menu_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/BackToMenuButton")
+grid = NodePath("MarginContainer/VBoxContainer/AspectRatioContainer/Grid")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment_vertical = 0
+
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "save_button", "copy_to_clipboard_button", "mobile_numpad") instance=ExtResource("3_5pps3")]
+layout_mode = 2
+size_flags_vertical = 3
+time_label = NodePath("../../HBoxContainer/VBoxContainer/TimeLabel")
+puzzle_info_label = NodePath("../../HBoxContainer/VBoxContainer/PuzzleInfoLabel")
+pencilmark_button = NodePath("../../HBoxContainer/VBoxContainer/PencilmarkModeButton2")
+highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
+clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
+save_button = NodePath("../../HBoxContainer/VBoxContainer/SaveButton")
+copy_to_clipboard_button = NodePath("../../HBoxContainer/VBoxContainer/CopyToClipboardButton")
+mobile_numpad = NodePath("../../HBoxContainer/Numpad")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ji3la")
+
+[node name="PencilmarkModeButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+shortcut = SubResource("Shortcut_5nhrx")
+text = "Pencilmark
+mode: off"
+text_overrun_behavior = 4
+
+[node name="HighlightButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Highlight clues"
+
+[node name="ClearHighlightButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Clear highlight"
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="PuzzleInfoText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Puzzle information:"
+
+[node name="PuzzleInfoLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Puzzle is invalid, no error checking provided"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="CopyToClipboardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Copy to Clipboard"
+
+[node name="BackToMenuButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to menu"
+
+[node name="Numpad" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_lnewa")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="FontResizer" type="Node" parent="."]
+script = ExtResource("5_p0vgd")
+themes_to_resize = Array[Theme]([ExtResource("6_fm5ki"), ExtResource("7_7mv4u"), ExtResource("1_ji3la")])
+custom_default_viewport_size = Vector2(720, 1600)

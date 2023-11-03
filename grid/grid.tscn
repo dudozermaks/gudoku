@@ -1,0 +1,402 @@
+[gd_scene load_steps=8 format=3 uid="uid://kkwvd7uyyut2"]
+
+[ext_resource type="Script" path="res://grid/grid.gd" id="1_lbxxd"]
+[ext_resource type="PackedScene" uid="uid://cpeua8y06ihlc" path="res://file_dialog/file_dialog.tscn" id="2_x8vg3"]
+[ext_resource type="Theme" uid="uid://bfc37t1clw71y" path="res://grid/grid.theme" id="3_ncm3v"]
+[ext_resource type="PackedScene" uid="uid://cse8xvbbolchq" path="res://cell/cell.tscn" id="3_uqgto"]
+[ext_resource type="FontFile" uid="uid://c5xeidn5moo" path="res://assets/Roboto-Medium.ttf" id="4_ry4jf"]
+[ext_resource type="Script" path="res://main_scene/solved_popup.gd" id="4_sb6uw"]
+
+[sub_resource type="Theme" id="Theme_s1alq"]
+default_font = ExtResource("4_ry4jf")
+
+[node name="Grid" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchor_right = 0.543
+anchor_bottom = 0.688
+offset_right = 0.149963
+script = ExtResource("1_lbxxd")
+metadata/_edit_vertical_guides_ = []
+
+[node name="FileDialog" parent="." instance=ExtResource("2_x8vg3")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Grid" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_ncm3v")
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Square0" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square0" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square1" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square1" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square2" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square2" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square3" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square3" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square4" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square4" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square5" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square5" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square6" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square6" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square7" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square7" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Square8" type="GridContainer" parent="MarginContainer/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_ncm3v")
+columns = 3
+
+[node name="Cell0" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell1" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell2" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell3" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell4" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell5" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell6" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell7" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="Cell8" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
+layout_mode = 2
+
+[node name="SolvedPopup" type="Popup" parent="."]
+initial_position = 1
+size = Vector2i(300, 300)
+script = ExtResource("4_sb6uw")
+
+[node name="Control" type="Control" parent="SolvedPopup"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_s1alq")
+
+[node name="MarginContainer" type="MarginContainer" parent="SolvedPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SolvedPopup/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="SolvedPopup/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[rainbow freq=0.2 sat=0.4 val=1][center]You solved it![/center][/rainbow]
+Time: %s"
+
+[node name="BackButton" type="Button" parent="SolvedPopup/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back to puzzle"
+
+[connection signal="file_selected" from="FileDialog" to="." method="save_to_file"]
+[connection signal="pressed" from="SolvedPopup/Control/MarginContainer/VBoxContainer/BackButton" to="SolvedPopup" method="_on_back_button_pressed"]

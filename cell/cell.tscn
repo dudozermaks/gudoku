@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://cse8xvbbolchq"]
+
+[ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="1_2xkju"]
+[ext_resource type="Script" path="res://cell/cell.gd" id="2_jdqdh"]
+
+[node name="Cell" type="Control" groups=["cells"]]
+layout_mode = 3
+anchor_right = 0.067
+anchor_bottom = 0.085
+offset_right = 0.349998
+offset_bottom = 0.25
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_2xkju")
+script = ExtResource("2_jdqdh")
+
+[node name="MainBG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.882353, 0.882353, 0.882353, 1)
+
+[node name="HighlightBG" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.658824, 0.94902, 0.921569, 1)
+
+[node name="MistakenBG" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94902, 0.654902, 0.654902, 1)
+
+[node name="FocusShade" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.176471)
+
+[node name="Clue" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Clue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pencilmarks" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Pencilmarks"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
