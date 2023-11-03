@@ -25,7 +25,7 @@ App for Sudoku solving written using awesome [Godot Engine](https://godotengine.
 </p>
 
 * Fully open-source and adds-free.
-* Linux + Windows (untested) + Android support.
+* Linux + Windows + Android support.
 * In-app Sudoku generation and difficulty checking using [Sudoku C++ Library](https://github.com/dudozermaks/sudoku_lib).
 * Keyboard oriented desktop app. Use `hjkl` and `m` to move across the grid. More shortcuts are below.
 
