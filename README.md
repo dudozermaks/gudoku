@@ -52,6 +52,8 @@ App for Sudoku solving written using awesome [Godot Engine](https://godotengine.
 1. Launch `Gudoku` executable.
 1. *Optional*: Create [shortcut](https://support.microsoft.com/en-us/office/create-a-desktop-shortcut-for-an-office-program-or-file-9a8df64b-cd87-4700-95cc-4bc3e2a962da) to Gudoku for quick access from desktop.
 
+* if you are using nixos, and binary does not run, check out [this](https://unix.stackexchange.com/a/522823/588681)
+
 ### Android
 
 1. Grab latest released `.apk`.
