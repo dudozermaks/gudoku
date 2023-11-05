@@ -398,5 +398,4 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Back to puzzle"
 
-[connection signal="file_selected" from="FileDialog" to="." method="save_to_file"]
 [connection signal="pressed" from="SolvedPopup/Control/MarginContainer/VBoxContainer/BackButton" to="SolvedPopup" method="_on_back_button_pressed"]

@@ -8,7 +8,7 @@ signal saving_ended
 @export var pencilmark_button : Button
 @export var highlight_button : Button
 @export var clear_highlight_button : Button
-@export var save_button : Button
+@export var export_button : Button
 @export var copy_to_clipboard_button : Button
 @export var mobile_numpad : Numpad = null
 
@@ -22,6 +22,7 @@ var highlighted_number : int
 
 var loaded := false
 var loaded_puzzle := ""
+var filename := ""
 
 var is_valid := false
 
@@ -146,7 +147,7 @@ func _ready():
 	pencilmark_button.toggled.connect(_pencilmark_button_toggled)
 	highlight_button.pressed.connect(func(): if selected_cell != Vector2i(-1, -1): highlight_number(_get_cell(selected_cell).clue))
 	clear_highlight_button.pressed.connect(func(): clear_highlight())
-	save_button.pressed.connect(func(): save_puzzle())
+	export_button.pressed.connect(_on_export_button_pressed)
 	copy_to_clipboard_button.pressed.connect(func(): DisplayServer.clipboard_set(export_clues_as_string()))
 
 	if mobile_numpad != null:
@@ -338,7 +339,7 @@ func load_from_dict(dict : Dictionary):
 	focus_on(select_cell)
 	time = dict["time"]
 
-func save_to_file(save_file_path : String):
+func export_to_file(save_file_path : String):
 	if save_file_path == "":
 		# generating new file path based on time
 		save_file_path = "user://" + Time.get_datetime_string_from_system() + ".gudoku"
@@ -352,6 +353,7 @@ func save_to_file(save_file_path : String):
 	var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
 
 	save_file.store_line(JSON.stringify(export_as_dict()))
+	filename = save_file_path
 	print("Saved to " + save_file_path)
 
 func load_from_file(save_file_path : String):
@@ -372,6 +374,16 @@ func load_from_file(save_file_path : String):
 	load_from_dict(parse_result)
 
 # Signals
+func _on_export_button_pressed():
+	$FileDialog.file_selected.connect(export_to_file)
+
+	$FileDialog.popup()
+	await $FileDialog.visibility_changed
+
+	$FileDialog.file_selected.disconnect(export_to_file)
+	
+	saving_ended.emit()
+
 func _on_field_edited(cell_edited : Cell):
 	if !loaded: return
 
@@ -406,8 +418,10 @@ func _pencilmark_button_toggled(_button_pressed:bool):
 		pencilmark_button.text += "off"
 
 func save_puzzle():
-	$FileDialog.popup()
-	await $FileDialog.visibility_changed
+	if filename == "":
+		export_to_file("")
+	else:
+		export_to_file(filename)
 	
 	saving_ended.emit()
 

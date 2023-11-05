@@ -36,7 +36,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.95
 
-[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "save_button", "copy_to_clipboard_button") instance=ExtResource("2_nvosp")]
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "export_button", "copy_to_clipboard_button") instance=ExtResource("2_nvosp")]
 layout_mode = 2
 size_flags_horizontal = 3
 time_label = NodePath("../../VBoxContainer/TimeLabel")
@@ -44,7 +44,7 @@ puzzle_info_label = NodePath("../../VBoxContainer/PuzzleInfoLabel")
 pencilmark_button = NodePath("../../VBoxContainer/PencilmarkModeButton")
 highlight_button = NodePath("../../VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../VBoxContainer/ClearHighlightButton")
-save_button = NodePath("../../VBoxContainer/SaveButton")
+export_button = NodePath("../../VBoxContainer/ExportButton")
 copy_to_clipboard_button = NodePath("../../VBoxContainer/CopyToClipboardButton")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
@@ -83,9 +83,9 @@ text = "Puzzle is invalid, no error checking provided"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="SaveButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ExportButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Save"
+text = "Export"
 
 [node name="CopyToClipboardButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
