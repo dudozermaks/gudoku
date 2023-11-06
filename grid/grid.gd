@@ -1,6 +1,8 @@
 extends Control
 class_name Grid
 
+signal initialized
+
 @export_subgroup("Control Nodes")
 @export var time_label : Label
 @export var puzzle_info_label : Label
@@ -12,6 +14,7 @@ class_name Grid
 @export_subgroup("Components")
 @export var file_component : GridFileComponent
 @export var shortcut_component : GridShortcutComponent
+@export var touch_component : GridTouchComponent
 
 var time : float = 0
 var pencilmark_mode := false
@@ -43,11 +46,10 @@ func _ready():
 
 			cell.grid_position = Vector2i(col, row)
 
-			cell.clicked.connect(_cell_clicked)
 			cell.clue_edited.connect(_on_field_edited)
 
-	focus_on(Vector2i(0, 0))
 	clear_highlight()
+	initialized.emit()
 
 func _process(delta):
 	if !is_solved:
@@ -88,7 +90,7 @@ func move_focus(by : Vector2i):
 	focus_on(new_pos)
 
 func focus_on(pos : Vector2i):
-	if selected_cell == pos:
+	if selected_cell == pos or pos == Vector2i(-1, -1):
 		get_cell(selected_cell).focused = false
 		selected_cell = Vector2i(-1, -1)
 	else:
@@ -205,9 +207,6 @@ func _on_field_edited(cell_edited : Cell):
 		cell_edited.mistaken = true
 	elif cell_edited.mistaken:
 		cell_edited.mistaken = false
-
-func _cell_clicked(cell : Cell):
-	focus_on(cell.grid_position)
 
 func _pencilmark_button_toggled(_button_pressed:bool):
 	pencilmark_mode = !pencilmark_mode

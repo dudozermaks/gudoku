@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=13 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://0hyxgegxttlx" path="res://numpad/numpad.tscn" id="4_lnewa"]
 [ext_resource type="Script" path="res://grid/file_component.gd" id="5_8rs0i"]
 [ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="5_p0vgd"]
+[ext_resource type="Script" path="res://grid/touch_component.gd" id="6_01vep"]
 [ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="6_fm5ki"]
 [ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://numpad/numpad.theme" id="7_7mv4u"]
 
@@ -52,7 +53,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component") instance=ExtResource("3_5pps3")]
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component") instance=ExtResource("3_5pps3")]
 layout_mode = 2
 size_flags_vertical = 3
 time_label = NodePath("../../HBoxContainer/VBoxContainer/TimeLabel")
@@ -63,6 +64,7 @@ clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighli
 copy_to_clipboard_button = NodePath("../../HBoxContainer/VBoxContainer/CopyToClipboardButton")
 file_component = NodePath("GridFileComponent")
 shortcut_component = NodePath("GridShortcutComponent")
+touch_component = NodePath("GridTouchComponent")
 
 [node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("mobile_numpad")]
 script = ExtResource("4_f4y4c")
@@ -71,6 +73,9 @@ mobile_numpad = NodePath("../../../HBoxContainer/Numpad")
 [node name="GridFileComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
 script = ExtResource("5_8rs0i")
 export_button = NodePath("../../../HBoxContainer/VBoxContainer/ExportButton")
+
+[node name="GridTouchComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid"]
+script = ExtResource("6_01vep")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
