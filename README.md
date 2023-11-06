@@ -62,9 +62,9 @@ App for Sudoku solving written using awesome [Godot Engine](https://godotengine.
 Little tip for Android users. For all of my open-source apps, I use app manager [Obtainium](https://github.com/ImranR98/Obtainium). Because this project is currently only on GitHub, you can't receive updates automatically if you only install `.apk`. But Obtainium can help you with this.
 
 ## How to build
-
-1. Grab (or build yourself) [SudokuLib binding](https://github.com/dudozermaks/sudoku_lib_godot) for your platform and put it into `bin` folder.
-2. Export project in Godot.
+ 
+1. If there is no extnesion in `bin` folder, grab (or build yourself) [SudokuLib binding](https://github.com/dudozermaks/sudoku_lib_godot) for your platform and put it into `bin` folder.
+1. [Export project in Godot](https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html)
 
 ## Plans
 
