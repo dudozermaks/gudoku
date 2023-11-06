@@ -11,13 +11,13 @@ func _ready():
 		size = get_viewport().get_visible_rect().size
 
 func back_to_menu():
-	await grid.on_exit()
+	await grid.file_component.save_on_exit()
 	menu.visible = true
 	queue_free()
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		await grid.on_exit()
+		await grid.file_component.save_on_exit()
 		get_tree().quit()
 
 	elif what == NOTIFICATION_WM_GO_BACK_REQUEST:

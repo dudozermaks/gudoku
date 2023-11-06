@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://kkwvd7uyyut2"]
+[gd_scene load_steps=7 format=3 uid="uid://kkwvd7uyyut2"]
 
 [ext_resource type="Script" path="res://grid/grid.gd" id="1_lbxxd"]
-[ext_resource type="PackedScene" uid="uid://cpeua8y06ihlc" path="res://file_dialog/file_dialog.tscn" id="2_x8vg3"]
 [ext_resource type="Theme" uid="uid://bfc37t1clw71y" path="res://grid/grid.theme" id="3_ncm3v"]
 [ext_resource type="PackedScene" uid="uid://cse8xvbbolchq" path="res://cell/cell.tscn" id="3_uqgto"]
 [ext_resource type="FontFile" uid="uid://c5xeidn5moo" path="res://assets/Roboto-Medium.ttf" id="4_ry4jf"]
@@ -18,8 +17,6 @@ anchor_bottom = 0.688
 offset_right = 0.149963
 script = ExtResource("1_lbxxd")
 metadata/_edit_vertical_guides_ = []
-
-[node name="FileDialog" parent="." instance=ExtResource("2_x8vg3")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

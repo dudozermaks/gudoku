@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=12 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="3_5pps3"]
+[ext_resource type="Script" path="res://grid/shortcut_component.gd" id="4_f4y4c"]
 [ext_resource type="PackedScene" uid="uid://0hyxgegxttlx" path="res://numpad/numpad.tscn" id="4_lnewa"]
+[ext_resource type="Script" path="res://grid/file_component.gd" id="5_8rs0i"]
 [ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="5_p0vgd"]
 [ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="6_fm5ki"]
 [ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://numpad/numpad.theme" id="7_7mv4u"]
@@ -50,7 +52,7 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "export_button", "copy_to_clipboard_button", "mobile_numpad") instance=ExtResource("3_5pps3")]
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component") instance=ExtResource("3_5pps3")]
 layout_mode = 2
 size_flags_vertical = 3
 time_label = NodePath("../../HBoxContainer/VBoxContainer/TimeLabel")
@@ -58,9 +60,17 @@ puzzle_info_label = NodePath("../../HBoxContainer/VBoxContainer/PuzzleInfoLabel"
 pencilmark_button = NodePath("../../HBoxContainer/VBoxContainer/PencilmarkModeButton2")
 highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
-export_button = NodePath("../../HBoxContainer/VBoxContainer/ExportButton")
 copy_to_clipboard_button = NodePath("../../HBoxContainer/VBoxContainer/CopyToClipboardButton")
-mobile_numpad = NodePath("../../HBoxContainer/Numpad")
+file_component = NodePath("GridFileComponent")
+shortcut_component = NodePath("GridShortcutComponent")
+
+[node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("mobile_numpad")]
+script = ExtResource("4_f4y4c")
+mobile_numpad = NodePath("../../../HBoxContainer/Numpad")
+
+[node name="GridFileComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
+script = ExtResource("5_8rs0i")
+export_button = NodePath("../../../HBoxContainer/VBoxContainer/ExportButton")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

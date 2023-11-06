@@ -28,7 +28,7 @@ func _on_load_file_button_pressed():
 
 func _on_load_file_dialog_file_selected(path:String):
 	var game_scene = _load_grid()
-	game_scene.grid.load_from_file(path)
+	game_scene.grid.file_component.load_from_file(path)
 	visible = false
 
 func _on_generate_button_pressed():
