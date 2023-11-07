@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://kkwvd7uyyut2"]
+[gd_scene load_steps=5 format=3 uid="uid://kkwvd7uyyut2"]
 
 [ext_resource type="Script" path="res://grid/grid.gd" id="1_lbxxd"]
 [ext_resource type="Theme" uid="uid://bfc37t1clw71y" path="res://grid/grid.theme" id="3_ncm3v"]
 [ext_resource type="PackedScene" uid="uid://cse8xvbbolchq" path="res://cell/cell.tscn" id="3_uqgto"]
-[ext_resource type="FontFile" uid="uid://c5xeidn5moo" path="res://assets/Roboto-Medium.ttf" id="4_ry4jf"]
-[ext_resource type="Script" path="res://main_scene/solved_popup.gd" id="4_sb6uw"]
-
-[sub_resource type="Theme" id="Theme_s1alq"]
-default_font = ExtResource("4_ry4jf")
+[ext_resource type="PackedScene" uid="uid://bm6m5idcmma3y" path="res://grid/popups/solved_popup.tscn" id="4_5a0jd"]
 
 [node name="Grid" type="Control"]
 texture_filter = 1
@@ -353,46 +349,4 @@ layout_mode = 2
 [node name="Cell8" parent="MarginContainer/Grid/Square8" instance=ExtResource("3_uqgto")]
 layout_mode = 2
 
-[node name="SolvedPopup" type="Popup" parent="."]
-initial_position = 1
-size = Vector2i(300, 300)
-script = ExtResource("4_sb6uw")
-
-[node name="Control" type="Control" parent="SolvedPopup"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_s1alq")
-
-[node name="MarginContainer" type="MarginContainer" parent="SolvedPopup/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SolvedPopup/Control/MarginContainer"]
-layout_mode = 2
-
-[node name="Text" type="RichTextLabel" parent="SolvedPopup/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[rainbow freq=0.2 sat=0.4 val=1][center]You solved it![/center][/rainbow]
-Time: %s"
-
-[node name="BackButton" type="Button" parent="SolvedPopup/Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Back to puzzle"
-
-[connection signal="pressed" from="SolvedPopup/Control/MarginContainer/VBoxContainer/BackButton" to="SolvedPopup" method="_on_back_button_pressed"]
+[node name="SolvedPopup" parent="." instance=ExtResource("4_5a0jd")]

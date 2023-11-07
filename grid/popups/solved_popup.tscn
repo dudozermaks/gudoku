@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6m5idcmma3y"]
+
+[ext_resource type="Script" path="res://grid/popups/solved_popup.gd" id="1_avgew"]
+[ext_resource type="FontFile" uid="uid://c5xeidn5moo" path="res://assets/Roboto-Medium.ttf" id="2_man14"]
+
+[sub_resource type="Theme" id="Theme_s1alq"]
+default_font = ExtResource("2_man14")
+
+[node name="SolvedPopup" type="Popup"]
+initial_position = 1
+size = Vector2i(300, 300)
+script = ExtResource("1_avgew")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_s1alq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[rainbow freq=0.2 sat=0.4 val=1][center]You solved it![/center][/rainbow]
+Time: %s"
+
+[node name="BackButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back to puzzle"
+
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
