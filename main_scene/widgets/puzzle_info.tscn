@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8glqk18p1ccx"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/puzzle_info.gd" id="1_v5iyk"]
+
+[node name="PuzzleInfo" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[left]Puzzle info:[/left]
+[center]%s[/center]"
+script = ExtResource("1_v5iyk")

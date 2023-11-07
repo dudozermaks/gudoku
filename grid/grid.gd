@@ -2,10 +2,10 @@ extends Control
 class_name Grid
 
 signal initialized
+signal puzzle_loaded(info: Dictionary)
 
 @export_subgroup("Control Nodes")
 @export var time_label : Label
-@export var puzzle_info_label : Label
 @export var pencilmark_button : Button
 @export var highlight_button : Button
 @export var clear_highlight_button : Button
@@ -136,19 +136,11 @@ func load_puzzle(puzzle : String) -> void:
 	print("Loading puzzle: " + puzzle)
 
 	is_valid = Grid.is_puzzle_valid(puzzle)
+	var puzzle_info : Dictionary
 
 	if is_valid:
-		puzzle_info_label.text = "Puzzle is valid\n"
-
 		SudokuLib.load_puzzle(puzzle)
-		var puzzle_info : Dictionary = SudokuLib.rate()
-		puzzle_info_label.text += "Score: " + str(puzzle_info["score"])
-		if !puzzle_info["is_solved"]:
-			puzzle_info_label.text += "+\nEngine could not solve this puzzle!"
-		puzzle_info_label.text += "\nUsed methods:\n"
-		for method in puzzle_info["used_methods"]:
-			puzzle_info_label.text += method + "\n"
-
+		puzzle_info = SudokuLib.rate()
 		SudokuLib.make_solved_copy()
 
 	for row in range(0, 9):
@@ -161,6 +153,7 @@ func load_puzzle(puzzle : String) -> void:
 
 	loaded = true
 	loaded_puzzle = puzzle
+	puzzle_loaded.emit(puzzle_info)
 	
 func export_clues_as_string(user_pencilmarks := false) -> String:
 	var res := ""
