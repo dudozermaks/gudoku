@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://bm6m5idcmma3y"]
 
-[ext_resource type="Script" path="res://grid/popups/solved_popup.gd" id="1_avgew"]
-[ext_resource type="FontFile" uid="uid://c5xeidn5moo" path="res://assets/Roboto-Medium.ttf" id="2_man14"]
+[ext_resource type="Script" path="res://grid/popups_and_confirmations/solved_popup.gd" id="1_k6u12"]
+[ext_resource type="FontFile" uid="uid://c5xeidn5moo" path="res://assets/Roboto-Medium.ttf" id="2_yi1uw"]
 
 [sub_resource type="Theme" id="Theme_s1alq"]
-default_font = ExtResource("2_man14")
+default_font = ExtResource("2_yi1uw")
 
 [node name="SolvedPopup" type="Popup"]
 initial_position = 1
 size = Vector2i(300, 300)
-script = ExtResource("1_avgew")
+script = ExtResource("1_k6u12")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dppgl87pa86ly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_webuk"]
+
+[sub_resource type="Theme" id="Theme_wqmh2"]
+AcceptDialog/styles/panel = SubResource("StyleBoxEmpty_webuk")
+
+[node name="SaveConfirmation" type="ConfirmationDialog"]
+title = "Save Sudoku?"
+initial_position = 1
+theme = SubResource("Theme_wqmh2")
+ok_button_text = "Yes"
+cancel_button_text = "No"

@@ -5,7 +5,8 @@ signal saving_ended
 
 @export var export_button : Button
 
-var file_dialog_tscn = preload("res://file_dialog/file_dialog.tscn")
+var file_dialog_tscn := preload("res://file_dialog/file_dialog.tscn")
+var save_confirmation_tscn := preload("res://grid/popups_and_confirmations/save_confirmation.tscn")
 
 var filename := ""
 
@@ -77,10 +78,19 @@ func load_from_file(save_file_path : String):
 	load_from_dict(parse_result)
 
 func save_puzzle():
-	if filename == "":
-		export_to_file("")
-	else:
-		export_to_file(filename)
+	var save_confirmation = save_confirmation_tscn.instantiate()
+	save_confirmation.confirmed.connect(func():
+		if filename == "":
+			export_to_file("")
+		else:
+			export_to_file(filename)
+	)
+	add_child(save_confirmation)
+
+	save_confirmation.popup()
+	await save_confirmation.visibility_changed
+
+	remove_child(save_confirmation)
 	
 	saving_ended.emit()
 

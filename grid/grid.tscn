@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://grid/grid.gd" id="1_lbxxd"]
 [ext_resource type="Theme" uid="uid://bfc37t1clw71y" path="res://grid/grid.theme" id="3_ncm3v"]
 [ext_resource type="PackedScene" uid="uid://cse8xvbbolchq" path="res://cell/cell.tscn" id="3_uqgto"]
-[ext_resource type="PackedScene" uid="uid://bm6m5idcmma3y" path="res://grid/popups/solved_popup.tscn" id="4_5a0jd"]
+[ext_resource type="PackedScene" uid="uid://bm6m5idcmma3y" path="res://grid/popups_and_confirmations/solved_popup.tscn" id="4_5a0jd"]
 
 [node name="Grid" type="Control"]
 texture_filter = 1
