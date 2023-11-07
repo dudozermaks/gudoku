@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=14 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="6_fm5ki"]
 [ext_resource type="Script" path="res://grid/components/touch_component.gd" id="6_obdtg"]
 [ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://numpad/numpad.theme" id="7_7mv4u"]
+[ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_nogxq"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
 action = &"toggle_pencilmark_mode"
@@ -53,11 +54,10 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "puzzle_info_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component") instance=ExtResource("3_5pps3")]
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component") instance=ExtResource("3_5pps3")]
 layout_mode = 2
 size_flags_vertical = 3
 time_label = NodePath("../../HBoxContainer/VBoxContainer/TimeLabel")
-puzzle_info_label = NodePath("../../HBoxContainer/VBoxContainer/PuzzleInfoLabel")
 pencilmark_button = NodePath("../../HBoxContainer/VBoxContainer/PencilmarkModeButton2")
 highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
@@ -109,15 +109,9 @@ layout_mode = 2
 text = "00:00:00"
 horizontal_alignment = 1
 
-[node name="PuzzleInfoText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PuzzleInfo" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_nogxq")]
 layout_mode = 2
-text = "Puzzle information:"
-
-[node name="PuzzleInfoLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Puzzle is invalid, no error checking provided"
-horizontal_alignment = 1
-autowrap_mode = 2
+grid = NodePath("../../../AspectRatioContainer/Grid")
 
 [node name="ExportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

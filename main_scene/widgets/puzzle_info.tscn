@@ -11,4 +11,5 @@ grow_vertical = 2
 bbcode_enabled = true
 text = "[left]Puzzle info:[/left]
 [center]%s[/center]"
+fit_content = true
 script = ExtResource("1_v5iyk")
