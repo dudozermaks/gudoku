@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
 [ext_resource type="Theme" uid="uid://dl2opt8d54kxa" path="res://main_scene/ui_pc.theme" id="3_6ci7a"]
-[ext_resource type="Script" path="res://grid/file_component.gd" id="3_naacx"]
+[ext_resource type="Script" path="res://grid/components/file_component.gd" id="3_tu2l6"]
+[ext_resource type="Script" path="res://grid/components/shortcut_component.gd" id="4_5gh03"]
 [ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="4_7d8mf"]
-[ext_resource type="Script" path="res://grid/shortcut_component.gd" id="4_a6b74"]
-[ext_resource type="Script" path="res://grid/touch_component.gd" id="5_8bedp"]
 [ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="5_alvql"]
+[ext_resource type="Script" path="res://grid/components/touch_component.gd" id="5_e7k3p"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
 action = &"toggle_pencilmark_mode"
@@ -53,14 +53,14 @@ shortcut_component = NodePath("GridShortcutComponent")
 touch_component = NodePath("GridTouchComponent")
 
 [node name="GridFileComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
-script = ExtResource("3_naacx")
+script = ExtResource("3_tu2l6")
 export_button = NodePath("../../../VBoxContainer/ExportButton")
 
 [node name="GridShortcutComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid"]
-script = ExtResource("4_a6b74")
+script = ExtResource("4_5gh03")
 
 [node name="GridTouchComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid"]
-script = ExtResource("5_8bedp")
+script = ExtResource("5_e7k3p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
