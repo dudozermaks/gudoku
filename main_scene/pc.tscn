@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvrcrl6w728vq"]
+[gd_scene load_steps=18 format=3 uid="uid://cvrcrl6w728vq"]
 
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dyc3vcg1el6bt" path="res://main_scene/widgets/highlight.tscn" id="9_dvnbt"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_8ok4n"]
 [ext_resource type="PackedScene" uid="uid://cbst3deab0b83" path="res://main_scene/widgets/export.tscn" id="10_m1ev5"]
+[ext_resource type="PackedScene" uid="uid://ddpe5yutqpfmg" path="res://main_scene/widgets/clear_highlight.tscn" id="10_vu1fn"]
 [ext_resource type="PackedScene" uid="uid://cqceuetadpivp" path="res://main_scene/widgets/back_to_menu.tscn" id="12_iceyr"]
 
 [node name="MainScene" type="Control" node_paths=PackedStringArray("grid")]
@@ -40,10 +41,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.95
 
-[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("clear_highlight_button") instance=ExtResource("2_nvosp")]
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" instance=ExtResource("2_nvosp")]
 layout_mode = 2
 size_flags_horizontal = 3
-clear_highlight_button = NodePath("../../VBoxContainer/ClearHighlightButton")
 
 [node name="GridFileComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid"]
 script = ExtResource("3_tu2l6")
@@ -68,9 +68,8 @@ layout_mode = 2
 [node name="HighlightButton" parent="HBoxContainer/VBoxContainer" instance=ExtResource("9_dvnbt")]
 layout_mode = 2
 
-[node name="ClearHighlightButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ClearHighlightButton2" parent="HBoxContainer/VBoxContainer" instance=ExtResource("10_vu1fn")]
 layout_mode = 2
-text = "Clear highlight"
 
 [node name="Time" parent="HBoxContainer/VBoxContainer" instance=ExtResource("7_unacd")]
 layout_mode = 2

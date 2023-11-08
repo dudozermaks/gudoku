@@ -4,9 +4,6 @@ class_name Grid
 signal puzzle_loaded(info: Dictionary)
 signal pencilmark_mode_changed
 
-@export_subgroup("Control Nodes")
-@export var clear_highlight_button : Button
-
 var time : float = 0
 
 var pencilmark_mode := false :
@@ -22,14 +19,11 @@ var edited := false
 var selected_cell := Vector2i(-1, -1)
 var highlighted_number : int
 
-var loaded := false
 var loaded_puzzle := ""
 
 var is_valid := false
 
 func _ready():
-	clear_highlight_button.pressed.connect(func(): clear_highlight())
-
 	for col in range(0, 9):
 		for row in range(0, 9):
 			@warning_ignore("integer_division")
@@ -138,7 +132,6 @@ func load_puzzle(puzzle : String) -> void:
 				cell.clue = clue
 				cell.lock()
 
-	loaded = true
 	loaded_puzzle = puzzle
 	puzzle_loaded.emit(puzzle_info)
 	
@@ -168,7 +161,7 @@ func export_pencilmarks_as_string() -> String:
 
 # Signals
 func _on_field_edited(cell_edited : Cell):
-	if !loaded: return
+	if loaded_puzzle.is_empty(): return
 
 	if highlighted_number != -1:
 		# updating highlight
