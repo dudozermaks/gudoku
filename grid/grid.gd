@@ -9,13 +9,6 @@ signal puzzle_loaded(info: Dictionary)
 @export var clear_highlight_button : Button
 @export var copy_to_clipboard_button : Button
 
-# @export_subgroup("Components")
-# @export var file_component : GridFileComponent
-# @export var shortcut_component : GridShortcutComponent
-# @export var touch_component : GridTouchComponent
-# @export var time_component : GridTimeComponent
-
-
 var time : float = 0
 
 var pencilmark_mode := false
