@@ -105,22 +105,19 @@ text = "Highlight clues"
 layout_mode = 2
 text = "Clear highlight"
 
-[node name="Time" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_ayemh")]
+[node name="Time" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("7_ayemh")]
 layout_mode = 2
-grid = NodePath("../../../AspectRatioContainer/Grid")
 
-[node name="PuzzleInfo" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_nogxq")]
+[node name="PuzzleInfo" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("7_nogxq")]
 layout_mode = 2
-grid = NodePath("../../../AspectRatioContainer/Grid")
 
 [node name="ExportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Export
 "
 
-[node name="CopyToClipboard" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("10_yy2ns")]
+[node name="CopyToClipboard" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_yy2ns")]
 layout_mode = 2
-grid = NodePath("../../../AspectRatioContainer/Grid")
 
 [node name="BackToMenuButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

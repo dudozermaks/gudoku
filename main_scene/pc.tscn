@@ -84,21 +84,18 @@ text = "Highlight clues"
 layout_mode = 2
 text = "Clear highlight"
 
-[node name="Time" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_unacd")]
+[node name="Time" parent="HBoxContainer/VBoxContainer" instance=ExtResource("7_unacd")]
 layout_mode = 2
-grid = NodePath("../../AspectRatioContainer/Grid")
 
-[node name="PuzzleInfo" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_375jo")]
+[node name="PuzzleInfo" parent="HBoxContainer/VBoxContainer" instance=ExtResource("7_375jo")]
 layout_mode = 2
-grid = NodePath("../../AspectRatioContainer/Grid")
 
 [node name="ExportButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Export"
 
-[node name="CopyToClipboard" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("10_8ok4n")]
+[node name="CopyToClipboard" parent="HBoxContainer/VBoxContainer" instance=ExtResource("10_8ok4n")]
 layout_mode = 2
-grid = NodePath("../../AspectRatioContainer/Grid")
 
 [node name="BackToMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

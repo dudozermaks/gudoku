@@ -1,10 +1,9 @@
 extends RichTextLabel
 
-@export var grid : Grid
 var invalid_puzzle_message := "Puzzle is invalid, no error checking provided"
 
 func _ready():
-	grid.puzzle_loaded.connect(func(info : Dictionary):
+	owner.grid.puzzle_loaded.connect(func(info : Dictionary):
 		var new_text : String
 		if info.is_empty():
 			new_text = invalid_puzzle_message
