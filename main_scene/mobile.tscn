@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=18 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://main_scene/widgets/numpad/numpad.theme" id="7_7mv4u"]
 [ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_ayemh"]
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_nogxq"]
+[ext_resource type="PackedScene" uid="uid://cbst3deab0b83" path="res://main_scene/widgets/export.tscn" id="10_b7nt3"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_yy2ns"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
@@ -67,9 +68,8 @@ clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighli
 [node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid"]
 script = ExtResource("4_jag1k")
 
-[node name="GridFileComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
+[node name="GridFileComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid"]
 script = ExtResource("5_jm51q")
-export_button = NodePath("../../../HBoxContainer/VBoxContainer/ExportButton")
 
 [node name="GridTouchComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid"]
 script = ExtResource("6_obdtg")
@@ -110,10 +110,8 @@ layout_mode = 2
 [node name="PuzzleInfo" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("7_nogxq")]
 layout_mode = 2
 
-[node name="ExportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Export" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_b7nt3")]
 layout_mode = 2
-text = "Export
-"
 
 [node name="CopyToClipboard" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_yy2ns")]
 layout_mode = 2

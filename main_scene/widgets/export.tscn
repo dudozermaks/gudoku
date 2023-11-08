@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbst3deab0b83"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/export.gd" id="1_kkua7"]
+
+[node name="Export" type="Button"]
+text = "Export"
+script = ExtResource("1_kkua7")

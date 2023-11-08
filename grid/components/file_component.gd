@@ -3,16 +3,10 @@ class_name GridFileComponent
 
 signal saving_ended
 
-@export var export_button : Button
-
 var file_dialog_tscn := preload("res://file_dialog/file_dialog.tscn")
 var save_confirmation_tscn := preload("res://grid/popups_and_confirmations/save_confirmation.tscn")
 
 var filename := ""
-
-func _ready():
-	if export_button:
-		export_button.pressed.connect(_on_export_button_pressed)
 
 func export_as_dict() -> Dictionary:
 	var res := {}
@@ -94,11 +88,7 @@ func save_puzzle():
 	
 	saving_ended.emit()
 
-func save_on_exit():
-	if !grid.is_solved and grid.edited:
-		await	save_puzzle()
-
-func _on_export_button_pressed():
+func export_puzzle():
 	var file_dialog = file_dialog_tscn.instantiate()
 
 	add_child(file_dialog)
@@ -111,3 +101,7 @@ func _on_export_button_pressed():
 	remove_child(file_dialog)
 	
 	saving_ended.emit()
+
+func save_on_exit():
+	if !grid.is_solved and grid.edited:
+		await	save_puzzle()
