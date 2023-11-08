@@ -174,6 +174,7 @@ func _on_field_edited(cell_edited : Cell):
 	if !loaded: return
 
 	if highlighted_number != -1:
+		# updating highlight
 		highlight_number(highlighted_number, true)
 
 	SudokuLib.load_puzzle(export_clues_as_string())
