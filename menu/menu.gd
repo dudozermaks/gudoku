@@ -3,9 +3,6 @@ extends Control
 func _ready():
 	%GenerateButton.grab_focus()
 	OS.request_permissions()
-	# if OS.get_name() in ["Android", "iOS"]: 
-	# 	$LoadFileButton.disabled = true
-
 
 func _load_grid():
 	var game_scene
@@ -28,7 +25,7 @@ func _on_load_file_button_pressed():
 
 func _on_load_file_dialog_file_selected(path:String):
 	var game_scene = _load_grid()
-	game_scene.grid.file_component.load_from_file(path)
+	game_scene.grid.get_component("File").load_from_file(path)
 	visible = false
 
 func _on_generate_button_pressed():
