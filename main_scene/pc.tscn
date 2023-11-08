@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvrcrl6w728vq"]
+[gd_scene load_steps=15 format=3 uid="uid://cvrcrl6w728vq"]
 
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://grid/components/time_component.gd" id="6_qwcop"]
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_375jo"]
 [ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_unacd"]
+[ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_8ok4n"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
 action = &"toggle_pencilmark_mode"
@@ -42,13 +43,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.95
 
-[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button") instance=ExtResource("2_nvosp")]
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button") instance=ExtResource("2_nvosp")]
 layout_mode = 2
 size_flags_horizontal = 3
 pencilmark_button = NodePath("../../VBoxContainer/PencilmarkModeButton")
 highlight_button = NodePath("../../VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../VBoxContainer/ClearHighlightButton")
-copy_to_clipboard_button = NodePath("../../VBoxContainer/CopyToClipboardButton")
 
 [node name="GridFileComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
 script = ExtResource("3_tu2l6")
@@ -96,9 +96,9 @@ grid = NodePath("../../AspectRatioContainer/Grid")
 layout_mode = 2
 text = "Export"
 
-[node name="CopyToClipboardButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="CopyToClipboard" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("10_8ok4n")]
 layout_mode = 2
-text = "Copy to Clipboard"
+grid = NodePath("../../AspectRatioContainer/Grid")
 
 [node name="BackToMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -7,7 +7,6 @@ signal puzzle_loaded(info: Dictionary)
 @export var pencilmark_button : Button
 @export var highlight_button : Button
 @export var clear_highlight_button : Button
-@export var copy_to_clipboard_button : Button
 
 var time : float = 0
 
@@ -27,7 +26,6 @@ func _ready():
 	pencilmark_button.toggled.connect(_pencilmark_button_toggled)
 	highlight_button.pressed.connect(func(): if selected_cell != Vector2i(-1, -1): highlight_number(get_cell(selected_cell).clue))
 	clear_highlight_button.pressed.connect(func(): clear_highlight())
-	copy_to_clipboard_button.pressed.connect(func(): DisplayServer.clipboard_set(export_clues_as_string()))
 
 	for col in range(0, 9):
 		for row in range(0, 9):
