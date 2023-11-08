@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvrcrl6w728vq"]
+[gd_scene load_steps=17 format=3 uid="uid://cvrcrl6w728vq"]
 
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_unacd"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_8ok4n"]
 [ext_resource type="PackedScene" uid="uid://cbst3deab0b83" path="res://main_scene/widgets/export.tscn" id="10_m1ev5"]
+[ext_resource type="PackedScene" uid="uid://cqceuetadpivp" path="res://main_scene/widgets/back_to_menu.tscn" id="12_iceyr"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
 action = &"toggle_pencilmark_mode"
@@ -20,7 +21,7 @@ action = &"toggle_pencilmark_mode"
 [sub_resource type="Shortcut" id="Shortcut_fqemq"]
 events = [SubResource("InputEventAction_qlrdm")]
 
-[node name="MainScene" type="Control" node_paths=PackedStringArray("back_to_menu_button", "grid")]
+[node name="MainScene" type="Control" node_paths=PackedStringArray("grid")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +29,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5h0il")
-back_to_menu_button = NodePath("HBoxContainer/VBoxContainer/BackToMenuButton")
 grid = NodePath("HBoxContainer/AspectRatioContainer/Grid")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -96,9 +96,8 @@ layout_mode = 2
 [node name="CopyToClipboard" parent="HBoxContainer/VBoxContainer" instance=ExtResource("10_8ok4n")]
 layout_mode = 2
 
-[node name="BackToMenuButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="BackToMenu" parent="HBoxContainer/VBoxContainer" instance=ExtResource("12_iceyr")]
 layout_mode = 2
-text = "Back to menu"
 
 [node name="FontResizer" type="Node" parent="."]
 script = ExtResource("4_7d8mf")

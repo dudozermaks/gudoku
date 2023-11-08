@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=19 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_nogxq"]
 [ext_resource type="PackedScene" uid="uid://cbst3deab0b83" path="res://main_scene/widgets/export.tscn" id="10_b7nt3"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_yy2ns"]
+[ext_resource type="PackedScene" uid="uid://cqceuetadpivp" path="res://main_scene/widgets/back_to_menu.tscn" id="12_3gli0"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
 action = &"toggle_pencilmark_mode"
@@ -22,7 +23,7 @@ action = &"toggle_pencilmark_mode"
 [sub_resource type="Shortcut" id="Shortcut_5nhrx"]
 events = [SubResource("InputEventAction_qlrdm")]
 
-[node name="MainScene" type="Control" node_paths=PackedStringArray("back_to_menu_button", "grid")]
+[node name="MainScene" type="Control" node_paths=PackedStringArray("grid")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
@@ -34,7 +35,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_ji3la")
 script = ExtResource("2_5shto")
-back_to_menu_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/BackToMenuButton")
 grid = NodePath("MarginContainer/VBoxContainer/AspectRatioContainer/Grid")
 metadata/_edit_use_anchors_ = true
 
@@ -116,9 +116,8 @@ layout_mode = 2
 [node name="CopyToClipboard" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_yy2ns")]
 layout_mode = 2
 
-[node name="BackToMenuButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BackToMenu" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("12_3gli0")]
 layout_mode = 2
-text = "Back to menu"
 
 [node name="Numpad" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_lnewa")]
 layout_mode = 2

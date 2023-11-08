@@ -1,12 +1,10 @@
 extends Control
 
-@export var back_to_menu_button : Button
 @export var grid : Grid
 
 var menu
 
 func _ready():
-	back_to_menu_button.pressed.connect(back_to_menu)
 	if OS.get_name() in ["Android", "iOS"]: 
 		size = get_viewport().get_visible_rect().size
 
