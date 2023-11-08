@@ -40,12 +40,17 @@ var shortcuts : Array[Dictionary] = [
 {
 	"key" : "c",
 	"desc" : "toggle clue mode",
-	"func" : func (_s : String): if grid.pencilmark_mode: grid._pencilmark_button_toggled(true)
+	"func" : func (_s : String): grid.pencilmark_mode = false
 },
 {
 	"key" : "p",
 	"desc" : "toggle pencilmark mode",
-	"func" : func (_s : String): if !grid.pencilmark_mode: grid._pencilmark_button_toggled(true)
+	"func" : func (_s : String): grid.pencilmark_mode = true
+},
+{
+	"key" : "slash",
+	"desc" : "change pencilmark mode",
+	"func" : func (_s : String): grid.pencilmark_mode = !grid.pencilmark_mode
 },
 {
 	"key" : "m",

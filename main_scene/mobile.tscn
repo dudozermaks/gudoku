@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=18 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
@@ -13,15 +13,10 @@
 [ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://main_scene/widgets/numpad/numpad.theme" id="7_7mv4u"]
 [ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_ayemh"]
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_nogxq"]
+[ext_resource type="PackedScene" uid="uid://brir8bmghrbfv" path="res://main_scene/widgets/pencilmark_mode.tscn" id="8_8k4pv"]
 [ext_resource type="PackedScene" uid="uid://cbst3deab0b83" path="res://main_scene/widgets/export.tscn" id="10_b7nt3"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_yy2ns"]
 [ext_resource type="PackedScene" uid="uid://cqceuetadpivp" path="res://main_scene/widgets/back_to_menu.tscn" id="12_3gli0"]
-
-[sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
-action = &"toggle_pencilmark_mode"
-
-[sub_resource type="Shortcut" id="Shortcut_5nhrx"]
-events = [SubResource("InputEventAction_qlrdm")]
 
 [node name="MainScene" type="Control" node_paths=PackedStringArray("grid")]
 clip_contents = true
@@ -58,10 +53,9 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button") instance=ExtResource("3_5pps3")]
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("highlight_button", "clear_highlight_button") instance=ExtResource("3_5pps3")]
 layout_mode = 2
 size_flags_vertical = 3
-pencilmark_button = NodePath("../../HBoxContainer/VBoxContainer/PencilmarkModeButton2")
 highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
 
@@ -88,13 +82,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_ji3la")
 
-[node name="PencilmarkModeButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PencilmarkMode" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_8k4pv")]
 layout_mode = 2
-toggle_mode = true
-shortcut = SubResource("Shortcut_5nhrx")
-text = "Pencilmark
-mode: off"
-text_overrun_behavior = 4
 
 [node name="HighlightButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

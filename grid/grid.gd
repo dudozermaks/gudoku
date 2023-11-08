@@ -2,15 +2,21 @@ extends Control
 class_name Grid
 
 signal puzzle_loaded(info: Dictionary)
+signal pencilmark_mode_changed
 
 @export_subgroup("Control Nodes")
-@export var pencilmark_button : Button
 @export var highlight_button : Button
 @export var clear_highlight_button : Button
 
 var time : float = 0
 
-var pencilmark_mode := false
+var pencilmark_mode := false :
+	get:
+		return pencilmark_mode
+	set(mode):
+		pencilmark_mode = mode
+		pencilmark_mode_changed.emit()
+
 var is_solved := false
 var edited := false
 
@@ -23,7 +29,6 @@ var loaded_puzzle := ""
 var is_valid := false
 
 func _ready():
-	pencilmark_button.toggled.connect(_pencilmark_button_toggled)
 	highlight_button.pressed.connect(func(): if selected_cell != Vector2i(-1, -1): highlight_number(get_cell(selected_cell).clue))
 	clear_highlight_button.pressed.connect(func(): clear_highlight())
 
@@ -185,12 +190,3 @@ func _on_field_edited(cell_edited : Cell):
 		cell_edited.mistaken = true
 	elif cell_edited.mistaken:
 		cell_edited.mistaken = false
-
-func _pencilmark_button_toggled(_button_pressed:bool):
-	pencilmark_mode = !pencilmark_mode
-	pencilmark_button.text = "Pencilmark\nmode: "
-
-	if pencilmark_mode:
-		pencilmark_button.text += "on"
-	else:
-		pencilmark_button.text += "off"
