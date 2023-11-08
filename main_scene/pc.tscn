@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvrcrl6w728vq"]
+[gd_scene load_steps=14 format=3 uid="uid://cvrcrl6w728vq"]
 
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="4_7d8mf"]
 [ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="5_alvql"]
 [ext_resource type="Script" path="res://grid/components/touch_component.gd" id="5_e7k3p"]
+[ext_resource type="Script" path="res://grid/components/time_component.gd" id="6_qwcop"]
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_375jo"]
+[ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_unacd"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_qlrdm"]
 action = &"toggle_pencilmark_mode"
@@ -40,10 +42,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.95
 
-[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("time_label", "pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component") instance=ExtResource("2_nvosp")]
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component", "time_component") instance=ExtResource("2_nvosp")]
 layout_mode = 2
 size_flags_horizontal = 3
-time_label = NodePath("../../VBoxContainer/TimeLabel")
 pencilmark_button = NodePath("../../VBoxContainer/PencilmarkModeButton")
 highlight_button = NodePath("../../VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../VBoxContainer/ClearHighlightButton")
@@ -51,6 +52,7 @@ copy_to_clipboard_button = NodePath("../../VBoxContainer/CopyToClipboardButton")
 file_component = NodePath("GridFileComponent")
 shortcut_component = NodePath("GridShortcutComponent")
 touch_component = NodePath("GridTouchComponent")
+time_component = NodePath("GridTimeComponent")
 
 [node name="GridFileComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
 script = ExtResource("3_tu2l6")
@@ -61,6 +63,9 @@ script = ExtResource("4_5gh03")
 
 [node name="GridTouchComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid"]
 script = ExtResource("5_e7k3p")
+
+[node name="GridTimeComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid"]
+script = ExtResource("6_qwcop")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -83,10 +88,9 @@ text = "Highlight clues"
 layout_mode = 2
 text = "Clear highlight"
 
-[node name="TimeLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Time" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_unacd")]
 layout_mode = 2
-text = "00:00:00"
-horizontal_alignment = 1
+grid = NodePath("../../AspectRatioContainer/Grid")
 
 [node name="PuzzleInfo" parent="HBoxContainer/VBoxContainer" node_paths=PackedStringArray("grid") instance=ExtResource("7_375jo")]
 layout_mode = 2

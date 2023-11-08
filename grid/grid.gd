@@ -4,7 +4,6 @@ class_name Grid
 signal puzzle_loaded(info: Dictionary)
 
 @export_subgroup("Control Nodes")
-@export var time_label : Label
 @export var pencilmark_button : Button
 @export var highlight_button : Button
 @export var clear_highlight_button : Button
@@ -14,8 +13,10 @@ signal puzzle_loaded(info: Dictionary)
 @export var file_component : GridFileComponent
 @export var shortcut_component : GridShortcutComponent
 @export var touch_component : GridTouchComponent
+@export var time_component : GridTimeComponent
 
 var time : float = 0
+
 var pencilmark_mode := false
 var is_solved := false
 var edited := false
@@ -48,15 +49,6 @@ func _ready():
 			cell.clue_edited.connect(_on_field_edited)
 
 	clear_highlight()
-
-func _process(delta):
-	if !is_solved:
-		time += delta
-		var minutes := time / 60
-		var seconds := fmod(time, 60)
-		var milliseconds := fmod(time, 1) * 100
-		var time_string := "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
-		time_label.text = time_string
 
 static func is_puzzle_valid(puzzle : String) -> bool:
 	if puzzle.length() != 81:
@@ -189,7 +181,7 @@ func _on_field_edited(cell_edited : Cell):
 
 	if is_solved:
 		$SolvedPopup.visible = true
-		$SolvedPopup.format_text([time_label.text])
+		# $SolvedPopup.format_text([time_label.text])
 
 	if is_valid and\
 		cell_edited.clue != 0 and\
