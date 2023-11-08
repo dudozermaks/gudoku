@@ -56,17 +56,13 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component", "time_component") instance=ExtResource("3_5pps3")]
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button") instance=ExtResource("3_5pps3")]
 layout_mode = 2
 size_flags_vertical = 3
 pencilmark_button = NodePath("../../HBoxContainer/VBoxContainer/PencilmarkModeButton2")
 highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
 copy_to_clipboard_button = NodePath("../../HBoxContainer/VBoxContainer/CopyToClipboardButton")
-file_component = NodePath("GridFileComponent")
-shortcut_component = NodePath("GridShortcutComponent")
-touch_component = NodePath("GridTouchComponent")
-time_component = NodePath("GridTimeComponent")
 
 [node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("mobile_numpad")]
 script = ExtResource("4_jag1k")

@@ -5,7 +5,7 @@ extends RichTextLabel
 @onready var template_text = text
 
 func _ready():
-	grid.time_component.time_changed.connect(func():
+	grid.get_component("Time").time_changed.connect(func():
 		var minutes := grid.time / 60
 		var seconds := fmod(grid.time, 60)
 		var milliseconds := fmod(grid.time, 1) * 100

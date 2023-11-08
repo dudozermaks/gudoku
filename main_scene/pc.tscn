@@ -42,17 +42,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.95
 
-[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button", "file_component", "shortcut_component", "touch_component", "time_component") instance=ExtResource("2_nvosp")]
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("pencilmark_button", "highlight_button", "clear_highlight_button", "copy_to_clipboard_button") instance=ExtResource("2_nvosp")]
 layout_mode = 2
 size_flags_horizontal = 3
 pencilmark_button = NodePath("../../VBoxContainer/PencilmarkModeButton")
 highlight_button = NodePath("../../VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../VBoxContainer/ClearHighlightButton")
 copy_to_clipboard_button = NodePath("../../VBoxContainer/CopyToClipboardButton")
-file_component = NodePath("GridFileComponent")
-shortcut_component = NodePath("GridShortcutComponent")
-touch_component = NodePath("GridTouchComponent")
-time_component = NodePath("GridTimeComponent")
 
 [node name="GridFileComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
 script = ExtResource("3_tu2l6")

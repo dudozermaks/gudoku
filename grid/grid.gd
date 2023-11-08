@@ -9,11 +9,12 @@ signal puzzle_loaded(info: Dictionary)
 @export var clear_highlight_button : Button
 @export var copy_to_clipboard_button : Button
 
-@export_subgroup("Components")
-@export var file_component : GridFileComponent
-@export var shortcut_component : GridShortcutComponent
-@export var touch_component : GridTouchComponent
-@export var time_component : GridTimeComponent
+# @export_subgroup("Components")
+# @export var file_component : GridFileComponent
+# @export var shortcut_component : GridShortcutComponent
+# @export var touch_component : GridTouchComponent
+# @export var time_component : GridTimeComponent
+
 
 var time : float = 0
 
@@ -62,6 +63,8 @@ static func is_puzzle_valid(puzzle : String) -> bool:
 	SudokuLib.load_puzzle(puzzle)
 	return SudokuLib.is_valid()
 	
+func get_component(component_name : String):
+	return find_children("*", "Grid" + component_name + "Component")[0]
 
 func move_focus(by : Vector2i):
 	if selected_cell == Vector2i(-1, -1):

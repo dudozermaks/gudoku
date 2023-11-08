@@ -88,7 +88,7 @@ var shortcuts : Array[Dictionary] = [
 {
 	"key" : "s",
 	"desc" : "save",
-	"func" : func (_s : String): grid.file_component.save_puzzle()
+	"func" : func (_s : String): grid.get_component("File").save_puzzle()
 },
 ]
 
