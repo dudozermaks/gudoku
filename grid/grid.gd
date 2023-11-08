@@ -5,7 +5,6 @@ signal puzzle_loaded(info: Dictionary)
 signal pencilmark_mode_changed
 
 @export_subgroup("Control Nodes")
-@export var highlight_button : Button
 @export var clear_highlight_button : Button
 
 var time : float = 0
@@ -29,7 +28,6 @@ var loaded_puzzle := ""
 var is_valid := false
 
 func _ready():
-	highlight_button.pressed.connect(func(): if selected_cell != Vector2i(-1, -1): highlight_number(get_cell(selected_cell).clue))
 	clear_highlight_button.pressed.connect(func(): clear_highlight())
 
 	for col in range(0, 9):

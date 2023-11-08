@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=19 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_ayemh"]
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_nogxq"]
 [ext_resource type="PackedScene" uid="uid://brir8bmghrbfv" path="res://main_scene/widgets/pencilmark_mode.tscn" id="8_8k4pv"]
+[ext_resource type="PackedScene" uid="uid://dyc3vcg1el6bt" path="res://main_scene/widgets/highlight.tscn" id="9_edtbj"]
 [ext_resource type="PackedScene" uid="uid://cbst3deab0b83" path="res://main_scene/widgets/export.tscn" id="10_b7nt3"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_yy2ns"]
 [ext_resource type="PackedScene" uid="uid://cqceuetadpivp" path="res://main_scene/widgets/back_to_menu.tscn" id="12_3gli0"]
@@ -53,10 +54,9 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("highlight_button", "clear_highlight_button") instance=ExtResource("3_5pps3")]
+[node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" node_paths=PackedStringArray("clear_highlight_button") instance=ExtResource("3_5pps3")]
 layout_mode = 2
 size_flags_vertical = 3
-highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
 
 [node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid"]
@@ -85,9 +85,8 @@ theme = ExtResource("1_ji3la")
 [node name="PencilmarkMode" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("8_8k4pv")]
 layout_mode = 2
 
-[node name="HighlightButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HighlightButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("9_edtbj")]
 layout_mode = 2
-text = "Highlight clues"
 
 [node name="ClearHighlightButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
