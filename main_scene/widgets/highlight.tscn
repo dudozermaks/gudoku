@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyc3vcg1el6bt"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/highlight.gd" id="1_g2kx2"]
+
+[node name="Highlight" type="Button"]
+text = "Highlight clues"
+script = ExtResource("1_g2kx2")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqceuetadpivp"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/back_to_menu.gd" id="1_l42yg"]
+
+[node name="BackToMenu" type="Button"]
+text = "Back to Menu"
+script = ExtResource("1_l42yg")

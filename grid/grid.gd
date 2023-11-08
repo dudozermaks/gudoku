@@ -124,13 +124,14 @@ func load_puzzle(puzzle : String) -> void:
 		puzzle_info = SudokuLib.rate()
 		SudokuLib.make_solved_copy()
 
-	for row in range(0, 9):
-		for col in range(0, 9):
-			var cell := get_cell(Vector2i(col, row))
-			var clue : int = int(puzzle[col + row*9])
-			if clue != 0:
-				cell.clue = clue
-				cell.lock()
+	if puzzle.length() == 81:
+		for row in range(0, 9):
+			for col in range(0, 9):
+				var cell := get_cell(Vector2i(col, row))
+				var clue : int = int(puzzle[col + row*9])
+				if clue != 0:
+					cell.clue = clue
+					cell.lock()
 
 	loaded_puzzle = puzzle
 	puzzle_loaded.emit(puzzle_info)

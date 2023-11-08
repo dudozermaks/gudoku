@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddpe5yutqpfmg"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/clear_highlight.gd" id="1_tqgf4"]
+
+[node name="ClearHighlight" type="Button"]
+text = "Clear highlight"
+script = ExtResource("1_tqgf4")

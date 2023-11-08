@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://brir8bmghrbfv"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/pencilmark_mode.gd" id="1_rjj3x"]
+
+[node name="PencilmarkMode" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Pencilmark
+mode: %s"
+script = ExtResource("1_rjj3x")
