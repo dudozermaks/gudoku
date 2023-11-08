@@ -11,7 +11,7 @@ func _ready():
 		size = get_viewport().get_visible_rect().size
 
 func back_to_menu():
-	await grid.file_component.save_on_exit()
+	await grid.get_component("File").save_on_exit()
 	menu.visible = true
 	queue_free()
 
