@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d22i5pdj3u5gg"]
+
+[ext_resource type="Script" path="res://main_scene/widgets/copy_to_clipboard.gd" id="1_wyhej"]
+
+[node name="CopyToClipboard" type="Button"]
+text = "Copy to clipboard"
+script = ExtResource("1_wyhej")

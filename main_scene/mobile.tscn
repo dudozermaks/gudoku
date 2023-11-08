@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="3_5pps3"]
 [ext_resource type="Script" path="res://grid/components/shortcut_component.gd" id="4_jag1k"]
-[ext_resource type="PackedScene" uid="uid://0hyxgegxttlx" path="res://numpad/numpad.tscn" id="4_lnewa"]
+[ext_resource type="PackedScene" uid="uid://0hyxgegxttlx" path="res://main_scene/widgets/numpad/numpad.tscn" id="4_lnewa"]
 [ext_resource type="Script" path="res://grid/components/file_component.gd" id="5_jm51q"]
 [ext_resource type="Script" path="res://font_resizer/font_resizer.gd" id="5_p0vgd"]
 [ext_resource type="Theme" uid="uid://pq0mpnb72kuv" path="res://cell/cell.theme" id="6_fm5ki"]
 [ext_resource type="Script" path="res://grid/components/touch_component.gd" id="6_obdtg"]
 [ext_resource type="Script" path="res://grid/components/time_component.gd" id="7_3oem1"]
-[ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://numpad/numpad.theme" id="7_7mv4u"]
+[ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://main_scene/widgets/numpad/numpad.theme" id="7_7mv4u"]
 [ext_resource type="PackedScene" uid="uid://dwmdvdh1em4e0" path="res://main_scene/widgets/time.tscn" id="7_ayemh"]
 [ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="7_nogxq"]
 [ext_resource type="PackedScene" uid="uid://d22i5pdj3u5gg" path="res://main_scene/widgets/copy_to_clipboard.tscn" id="10_yy2ns"]
@@ -64,9 +64,8 @@ pencilmark_button = NodePath("../../HBoxContainer/VBoxContainer/PencilmarkModeBu
 highlight_button = NodePath("../../HBoxContainer/VBoxContainer/HighlightButton")
 clear_highlight_button = NodePath("../../HBoxContainer/VBoxContainer/ClearHighlightButton")
 
-[node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("mobile_numpad")]
+[node name="GridShortcutComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid"]
 script = ExtResource("4_jag1k")
-mobile_numpad = NodePath("../../../HBoxContainer/Numpad")
 
 [node name="GridFileComponent" type="Node" parent="MarginContainer/VBoxContainer/AspectRatioContainer/Grid" node_paths=PackedStringArray("export_button")]
 script = ExtResource("5_jm51q")

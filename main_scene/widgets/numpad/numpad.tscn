@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0hyxgegxttlx"]
 
-[ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://numpad/numpad.theme" id="1_3h8h8"]
-[ext_resource type="Script" path="res://numpad/numpad.gd" id="1_74j14"]
+[ext_resource type="Theme" uid="uid://c4t0ret32itgb" path="res://main_scene/widgets/numpad/numpad.theme" id="1_dpit5"]
+[ext_resource type="Script" path="res://main_scene/widgets/numpad/numpad.gd" id="2_y04ff"]
 
 [node name="Numpad" type="GridContainer"]
 anchors_preset = 15
@@ -9,9 +9,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_3h8h8")
+theme = ExtResource("1_dpit5")
 columns = 3
-script = ExtResource("1_74j14")
+script = ExtResource("2_y04ff")
 
 [node name="1" type="Button" parent="."]
 layout_mode = 2

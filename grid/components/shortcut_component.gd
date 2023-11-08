@@ -1,8 +1,6 @@
 extends GridComponentBase
 class_name GridShortcutComponent
 
-@export var mobile_numpad : Numpad = null
-
 var shortcut_position : Array[int]
 var shortcut_string : String
 
@@ -92,11 +90,7 @@ var shortcuts : Array[Dictionary] = [
 },
 ]
 
-func _ready():
-	if mobile_numpad:
-		mobile_numpad.number_clicked.connect(func(num : int): _process_key(num + KEY_0))
-
-func _process_key(keycode : Key) -> void:
+func process_key(keycode : Key) -> void:
 	if keycode == KEY_SHIFT: return
 	var key_string := OS.get_keycode_string(keycode)
 	if not Input.is_physical_key_pressed(KEY_SHIFT):
@@ -127,4 +121,4 @@ func _process_key(keycode : Key) -> void:
 func _input(event):
 	if event is InputEventKey and\
 		event.pressed == true:
-			_process_key(event.keycode)
+			process_key(event.keycode)
