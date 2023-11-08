@@ -1,7 +1,6 @@
 extends Control
 class_name Grid
 
-signal initialized
 signal puzzle_loaded(info: Dictionary)
 
 @export_subgroup("Control Nodes")
@@ -49,7 +48,6 @@ func _ready():
 			cell.clue_edited.connect(_on_field_edited)
 
 	clear_highlight()
-	initialized.emit()
 
 func _process(delta):
 	if !is_solved:

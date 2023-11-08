@@ -2,7 +2,7 @@ extends GridComponentBase
 class_name GridTouchComponent
 
 func _ready():
-	grid.initialized.connect(func():
+	grid.ready.connect(func():
 		for col in range(0, 9):
 			for row in range(0, 9):
 				var cell : Cell = grid.get_cell(Vector2i(col, row))
