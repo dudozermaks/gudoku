@@ -15,7 +15,7 @@ func back_to_menu():
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		await grid.file_component.save_on_exit()
+		await grid.get_component("File").save_on_exit()
 		get_tree().quit()
 
 	elif what == NOTIFICATION_WM_GO_BACK_REQUEST:
