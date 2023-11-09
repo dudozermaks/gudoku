@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcgpgjwghgjo1"]
+[gd_scene load_steps=21 format=3 uid="uid://dcgpgjwghgjo1"]
 
 [ext_resource type="Theme" uid="uid://dr2qiojqog5by" path="res://main_scene/ui_mobile.theme" id="1_ji3la"]
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="2_5shto"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="3_5pps3"]
+[ext_resource type="Script" path="res://grid/grid_container.gd" id="3_iatd2"]
 [ext_resource type="Script" path="res://grid/components/shortcut_component.gd" id="4_jag1k"]
 [ext_resource type="PackedScene" uid="uid://0hyxgegxttlx" path="res://main_scene/widgets/numpad/numpad.tscn" id="4_lnewa"]
 [ext_resource type="Script" path="res://grid/components/file_component.gd" id="5_jm51q"]
@@ -42,10 +43,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -53,7 +54,10 @@ layout_mode = 2
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
 alignment_vertical = 0
+script = ExtResource("3_iatd2")
+horizontal_spacing = false
 
 [node name="Grid" parent="MarginContainer/VBoxContainer/AspectRatioContainer" instance=ExtResource("3_5pps3")]
 layout_mode = 2
@@ -74,7 +78,6 @@ script = ExtResource("7_3oem1")
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvrcrl6w728vq"]
+[gd_scene load_steps=19 format=3 uid="uid://cvrcrl6w728vq"]
 
 [ext_resource type="Script" path="res://main_scene/main_scene.gd" id="1_5h0il"]
+[ext_resource type="Script" path="res://grid/grid_container.gd" id="2_7lj44"]
 [ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="2_nvosp"]
 [ext_resource type="Theme" uid="uid://dl2opt8d54kxa" path="res://main_scene/ui_pc.theme" id="3_6ci7a"]
 [ext_resource type="Script" path="res://grid/components/file_component.gd" id="3_tu2l6"]
@@ -39,7 +40,8 @@ grow_vertical = 2
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.95
+size_flags_stretch_ratio = 3.85
+script = ExtResource("2_7lj44")
 
 [node name="Grid" parent="HBoxContainer/AspectRatioContainer" instance=ExtResource("2_nvosp")]
 layout_mode = 2
