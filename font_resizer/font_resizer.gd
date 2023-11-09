@@ -13,7 +13,7 @@ enum SCALE_METHOD {
 @export var scale_method : SCALE_METHOD = SCALE_METHOD.MIN_SIDE_SIZE
 @export var custom_default_viewport_size := Vector2.ZERO
 # this script will save default font size of type_name into the font_size property with this name
-@export var property_name : String = "__default_font_size"
+@export var property_mask : String = "__default_"
 
 var default_viewport_size :Vector2
 
@@ -32,7 +32,8 @@ func _ready():
 
 	for theme in themes_to_resize:
 		for type_name in theme.get_font_size_type_list():
-			_set_default_font_size(theme, type_name, theme.get_font_size("font_size", type_name))
+			for font_size_name in theme.get_font_size_list(type_name):
+				_set_default_font_size(theme, type_name, font_size_name)
 
 	_calculate_and_apply_scale()
 
@@ -54,19 +55,22 @@ func _calculate_and_apply_scale():
 
 func _update_theme(theme : Theme):
 	for type_name in theme.get_font_size_type_list():
-		theme.set_font_size("font_size", type_name, _get_default_font_size(theme, type_name) * font_scale)
+			for font_size_name in theme.get_font_size_list(type_name):
+				if font_size_name.begins_with(property_mask): continue
+				theme.set_font_size(font_size_name, type_name, _get_default_font_size(theme, type_name, font_size_name) * font_scale)
 
-func _get_default_font_size(theme : Theme, type_name : String) -> int:
-	return theme.get_font_size(property_name, type_name)
+func _get_default_font_size(theme : Theme, type_name : String, font_size_name : String) -> int:
+	return theme.get_font_size(property_mask + font_size_name, type_name)
 
-func _set_default_font_size(theme : Theme, type_name : String, val : int):
-	theme.set_font_size(property_name, type_name, val)
+func _set_default_font_size(theme : Theme, type_name : String, font_size_name : String):
+	theme.set_font_size(property_mask + font_size_name, type_name, theme.get_font_size(font_size_name, type_name))
 
-func _clear_default_font_size(theme : Theme, type_name : String):
-	theme.clear_font_size(property_name, type_name)
+func _clear_default_font_size(theme : Theme, type_name : String, font_size_name : String):
+	theme.clear_font_size(property_mask + font_size_name, type_name)
 
 # clean-up
 func _exit_tree():
 	for theme in themes_to_resize:
 		for type_name in theme.get_font_size_type_list():
-			_clear_default_font_size(theme, type_name)
+			for font_size_name in theme.get_font_size_list(type_name):
+				_clear_default_font_size(theme, type_name, font_size_name)
