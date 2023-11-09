@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0crfbgp87135"]
+
+[ext_resource type="Script" path="res://preview/preview.gd" id="1_jlt8g"]
+[ext_resource type="Script" path="res://grid/grid_container.gd" id="2_ebx1x"]
+[ext_resource type="PackedScene" uid="uid://kkwvd7uyyut2" path="res://grid/grid.tscn" id="3_tj8e4"]
+[ext_resource type="Script" path="res://grid/components/file_component.gd" id="4_ngrug"]
+[ext_resource type="PackedScene" uid="uid://b8glqk18p1ccx" path="res://main_scene/widgets/puzzle_info.tscn" id="5_j2ch0"]
+
+[node name="Preview" type="Control" node_paths=PackedStringArray("grid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlt8g")
+grid = NodePath("HBoxContainer/AspectRatioContainer/Grid")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.95
+script = ExtResource("2_ebx1x")
+
+[node name="Grid" parent="HBoxContainer/AspectRatioContainer" instance=ExtResource("3_tj8e4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GridFileComponent" type="Node" parent="HBoxContainer/AspectRatioContainer/Grid"]
+script = ExtResource("4_ngrug")
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="PuzzleInfo" parent="HBoxContainer" instance=ExtResource("5_j2ch0")]
+layout_mode = 2
+size_flags_horizontal = 3
