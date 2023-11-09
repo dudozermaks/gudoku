@@ -25,15 +25,14 @@ func _ready():
 # How to calculate this in code?
 func _on_resized():
 # Step 1. Get window size
-	var window_size := DisplayServer.window_get_size()
-	# var window_size := get_viewport().get_visible_rect().size
-	# Step 2. Get grid ratio (min side is size of square)
+	var parent_size := get_parent_control().size
+# Step 2. Get grid ratio (min side is size of square)
 	var grid_ratio : float
+
 	if horizontal_spacing:
-		grid_ratio = (min(window_size.x, window_size.y)+spacing) / float(max(window_size.x, window_size.y))
+		grid_ratio = (min(parent_size.x, parent_size.y)+spacing) / float(max(parent_size.x, parent_size.y))
 	else:
-		grid_ratio = (min(window_size.x, window_size.y)-spacing) / float(max(window_size.x, window_size.y))
+		grid_ratio = min(parent_size.x, parent_size.y) / float(max(parent_size.x, parent_size.y))
 # Step 3. Because we can't change other node's ratio, we assume it's 1 and ajust grid ratio by some amount
 	var scale_ratio : float = 1 / (1 - grid_ratio)
 	size_flags_stretch_ratio = scale_ratio * grid_ratio
-	print("Changed grid stretch ratio to: ", size_flags_stretch_ratio)
