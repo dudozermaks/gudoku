@@ -43,10 +43,6 @@ static func is_puzzle_valid(puzzle : String) -> bool:
 	if puzzle.length() != 81:
 		print("Length == %d" % [puzzle.length()])
 		return false
-	for c in puzzle:
-		if !c.is_valid_int():
-			print("One of puzzle digits is not digit!")
-			return false
 
 	SudokuLib.load_puzzle(puzzle)
 	return SudokuLib.is_valid()
